@@ -1,0 +1,30 @@
+﻿@model List<LandModel>
+
+@{
+    ViewBag.Title = "Land Management System";
+}
+
+<h2>Land Parcels</h2>
+
+<table>
+    <tr>
+        <th>Parcel Number</th>
+        <th>Owner</th>
+        <th>Location</th>
+        <!-- Add more table headers for additional properties -->
+        <th>Actions</th>
+    </tr>
+    @foreach (var landParcel in Model)
+    {
+        <tr>
+            <td>@landParcel.ParcelNumber</td>
+            <td>@landParcel.Owner</td>
+            <td>@landParcel.Location</td>
+            <!-- Add more table cells for additional properties -->
+            <td>
+                <a href="@Url.Action("Edit", "Land", new { parcelNumber = landParcel.ParcelNumber })">Edit</a> |
+                <a href="@Url.Action("Delete", "Land", new { parcelNumber = landParcel.ParcelNumber })">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
